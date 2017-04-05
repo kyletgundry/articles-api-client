@@ -1,0 +1,26 @@
+<h2>New Article:</h2>
+
+<% form_tag "/articles", method: :post do %>
+  <div>
+    <label>Title:</label>
+    <input type="title" name="title">
+  </div>
+  <div>
+    <label>Author:</label>
+    <input type="author" name="author">
+  </div>
+  <div>
+    <label>Image:</label>
+    <input type="image" name="image">
+  </div>
+  <div>
+    <label>Date:</label>
+    <input type="date" name="date">
+  </div>
+  <div>
+    <label>Description:</label>
+    <input type="description" name="description">
+  </div>
+  <input type="submit" name="Save Article">
+<% end %>
+
