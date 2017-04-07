@@ -3,5 +3,5 @@
 <a href="/articles/new">Add An Article</a>
 
 <% @articles.each do |article| %>
-  <p><%= article["title"] %></p>
+  <p>ID #: <%= article["id"] %>: <%= article["title"] %></p>
 <% end %>

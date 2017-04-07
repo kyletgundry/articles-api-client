@@ -6,4 +6,12 @@
 <h3>Date: <%= @article["date"] %></h3>
 <h3>Description: <%= @article["description"] %></h3>
 
-<a href="/articles/<%= @article["id"] %>/edit">Edit Article</a>
+<p><a href="/articles/<%= @article["id"] %>/edit">Edit Article</a></p>
+
+<p>
+  <%= form_tag "/articles/#{@article["id"]}", method: :delete do %>
+  <input type="submit" value="Remove Article">
+  <% end %>
+</p>
+
+<p><a href="/articles">Home</a></p>

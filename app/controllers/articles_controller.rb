@@ -45,4 +45,9 @@ class ArticlesController < ApplicationController
       ).body
     redirect_to "/articles/#{@article["id"]}"
   end
+
+  def destroy
+    @article = Unirest.delete("http://localhost:3000/api/v1/articles/#{params[:id]}").body
+    redirect_to "/articles"
+  end
 end
