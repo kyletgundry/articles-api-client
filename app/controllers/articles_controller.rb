@@ -9,14 +9,17 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.create(
-      title: params[:title],
-      author: params[:author],
-      image: params[:image],
-      date: params[:date],
-      description: params[:description]
-      )
-    redirect_to "/articles"
+    @article = Unirest.post(
+      "http://localhost:3000/api/v1/articles", 
+      parameters: {
+        title: params["title"], 
+        author: params["author"], 
+        image: params["image"], 
+        date: params["date"], 
+        description: params["description"]
+        }
+      ).body
+    redirect_to "/articles/#{@article["id"]}"
   end
 
   def show
@@ -24,4 +27,22 @@ class ArticlesController < ApplicationController
     render "show.html.erb"
   end
 
+  def edit
+    @article = Unirest.get("http://localhost:3000/api/v1/articles/#{params[:id]}").body
+    render "edit.html.erb"
+  end
+
+  def update
+    @article = Unirest.patch(
+      "http://localhost:3000/api/v1/articles/#{params[:id]}", 
+      parameters: {
+        title: params["title"], 
+        author: params["author"], 
+        image: params["image"], 
+        date: params["date"], 
+        description: params["description"]
+        }
+      ).body
+    redirect_to "/articles/#{@article["id"]}"
+  end
 end

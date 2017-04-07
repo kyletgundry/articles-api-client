@@ -1,0 +1,26 @@
+<h1>Update:</h1>
+
+<%= form_tag "/articles/#{@article["id"]}", method: :patch do %>
+  <div>
+    <label>Title:</label>
+    <input type="title" name="title" value="<%= @article["title"] %>">
+  </div>
+  <div>
+    <label>Author:</label>
+    <input type="text" name="author" value="<%= @article["author"] %>">
+  </div>
+  <div>
+    <label>Image:</label>
+    <input type="text" name="image" value="<%= @article["image"] %>">
+  </div>
+  <div>
+    <label>Date:</label>
+    <input type="text" name="date" value="<%= @article["date"] %>">
+  </div>
+  <div>
+    <label>Description:</label>
+    <input type="text" name="description" value="<%= @article["description"] %>">
+  </div>
+  <input type="submit" name="Update Article">
+<% end %>
+
